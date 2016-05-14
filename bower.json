@@ -1,0 +1,6 @@
+{
+  "name": "flash-cards",
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
+}
