@@ -3,16 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title> Flash-Cards </title>
+
+  <!-- styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+      .navbar { border-radius:0; }
+  </style>
   <link rel="stylesheet" type="text/css" href="/main-app/main-style.css">
+
 </head>
-<body>
-  <h1> whoa </h1>
+<body ng-app='app'>
 
+  <!-- navigation -->
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="#">Flash Cards!</a>
+    </div>
 
-<!-- libraries -->
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="signin">Signin</a></li>
+        <li><a ui-sref="quiz">Quiz</a></li>
+        <li><a ui-sref="admin">Admin</a></li>        
+    </ul>
+  </nav>
+
+  <!-- libraries -->
   <script src='lib/angular/angular.min.js'></script>
+  <script src='lib/angular-ui-router/release/angular-ui-router.js'></script>
 
-<!-- scripts -->
+  <!-- scripts -->
   <script src='main-app/app.js'></script>
 
 </body>
