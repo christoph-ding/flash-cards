@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['admin', 'ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -16,6 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('admin', {
       url: '/admin',
-      templateUrl: '../sections/admin/admin.html'
+      templateUrl: '../sections/admin/admin.html',
+      controller: 'adminCtrl'
     })
 })

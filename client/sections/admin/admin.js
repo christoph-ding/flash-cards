@@ -1,14 +1,16 @@
 var admin = angular.module('admin', [])
 
-admin.controller('adminCtrl', function ($http, adminFunctionality) {
-  $scope.addCard = adminFunctionality.addCard();
-})
-
-admin.service('adminFunctionality', function ($http) {
-  this.addCard = function () {
-    // return $http.post('/newCard');
-    return console.log("adding card...");
+admin.controller('adminCtrl', function ($scope, $http, adminFunctionality) {
+  $scope.addCard = function() {
+    return adminFunctionality.addCard();
   }
 })
 
+admin.factory('adminFunctionality', function($http) {
+  return {
+    addCard: function() {
+      console.log('heya');
+    }
+  }
+})
 

@@ -1,10 +1,10 @@
 <!-- admin.html -->
 
-<div>
+<div ng-controller="adminCtrl">
   <h1> ADMIN TIME! </h1>
   <form>
     <h2> Add a card </h2>
     <input type="text" placeholder="front" required autofocus>
     <input type="text" placeholder="back" required autofocus>
-  <button type="submit">Add Word</button>
+  <button type="submit" ng-click="addCard()">Add Word</button>
 </div>
