@@ -5,7 +5,6 @@
   <title> Flash-Cards </title>
 
   <!-- styling -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
       .navbar { border-radius:0; }
   </style>
@@ -15,23 +14,23 @@
 <body ng-app='app'>
 
   <!-- navigation -->
-  <nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-      <a class="navbar-brand" ui-sref="#">Flash Cards!</a>
+  <nav>
+    <div>
+      <a ui-sref="#">Flash Cards!</a>
     </div>
 
-    <ul class="nav navbar-nav">
+    <ul>
         <li><a ui-sref="signin">Signin</a></li>
-        <li><a ui-sref="quiz">Quiz</a></li>
+        <li><a ui-sref="review">Review</a></li>
         <li><a ui-sref="admin">Admin</a></li>        
     </ul>
   </nav>
 
   <!-- container for main view -->
-  <div class="container">
+  <div>
     <div ui-view></div>
   </div>
-  
+
   <!-- libraries -->
   <script src='lib/angular/angular.min.js'></script>
   <script src='lib/angular-ui-router/release/angular-ui-router.js'></script>
