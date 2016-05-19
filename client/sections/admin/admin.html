@@ -6,5 +6,12 @@
     <h2> Add a card </h2>
     <input type="text" placeholder="front" ng-model="front"required autofocus>
     <input type="text" placeholder="back" ng-model="back" required autofocus>
-  <button type="submit" ng-click="addCard()">Add Word</button>
+    <button type="submit" ng-click="addCard()">Add Card</button>
+  </form>
+
+  <form>
+    <h2> See cards </h2>
+    <button type="submit" ng-click="fetchCards()">Get Cards</button> 
+  </form>
+    <h2 ng-repeat="card in cards"> {{card}} </h2>  
 </div>
