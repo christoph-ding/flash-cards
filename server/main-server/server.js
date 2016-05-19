@@ -1,22 +1,20 @@
-// Dependencies
+// dependencies
 var express = require('express');
 var path = require('path');
 
-// Variabls
-var root = '/../..';
-var clientAssets = path.resolve(__dirname + root + '/client');
-
-// Server
+// server
 var server = express();
 var port = process.env.PORT || 8000;
+
+// middleware
+require('./middleware.js')(server, express);
+
 server.listen(port, function() {
-  console.log('Flash-cards, hell yeah!' + '\n' + clientAssets);
+  console.log('Flash-cards, hell yeah!');
 });
 
-// Static Files
-server.use(express.static(path.resolve(clientAssets)));
+// middleware
+require('./middleware.js')(server, express);
 
-server.get('/', function(req, res) {
-  console.log('sending static files...');
-  res.sendFile('index.html', { root: path.join(clientAssets + '/main-app/')});
-})
+// export
+module.exports = server;
