@@ -20,7 +20,7 @@ module.exports = function (server, express) {
   // admin
   var adminRouter = express.Router();
   server.use('/admin', bodyParser.json(), adminRouter);
-  require('../services/admin/adminRouter.js');
+  require('../services/admin/adminRouter.js')(adminRouter);
 }
 
 

@@ -2,7 +2,7 @@
 
 // for router
 module.exports = {
-  saveCard: function () {
-    console.log('saving card...');
+  saveCard: function (req, res) {
+    res.send('saving card...');
   }
 }
