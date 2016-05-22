@@ -4,9 +4,6 @@ var path = require('path');
 // database
 var db = require(path.join(__dirname, '../../db/dbConfig.js'));
 
-// test data
-var testData = ['hello', 'goodbye', 'ringo', 'paul', 'george', 'jon'];
-
 // for router
 module.exports = {
   saveCard: function (req, res) {
@@ -41,6 +38,10 @@ module.exports = {
   },
 
   fetchCards: function(req, res) {
-    res.send(testData);
+    // we should not fetch cards which the user either got right or wrong too many times
+    db.Card.findAll({where: { $and: [ {bin: {$lt: 11}}, {wrong: {$lt: 10}}] }})
+    .then(function(cards) {
+      res.send(cards);
+    })
   }
 }

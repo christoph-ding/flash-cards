@@ -24,8 +24,8 @@ var Card = connection.define('Card', {
     back: sequelize.STRING,
     bin: sequelize.INTEGER,
     next: sequelize.DATE,
-    right: sequelize.STRING,
-    wrong: sequelize.STRING
+    right: sequelize.INTEGER,
+    wrong: sequelize.INTEGER
   },
   {
     tableName: 'Cards'

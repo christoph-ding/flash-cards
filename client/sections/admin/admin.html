@@ -13,5 +13,25 @@
     <h2> See cards </h2>
     <button type="submit" ng-click="fetchCards()">Get Cards</button> 
   </form>
-    <h2 ng-repeat="card in cards"> {{card}} </h2>  
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"> Front </th>
+        <th scope="col"> Back </th>
+        <th scope="col"> Bin </th>
+        <th scope="col"> Next Time Shown </th>
+        <th scope="col"> # Times Right </th>
+        <th scope="col"> # Times Wrong </th>
+      </tr>
+    </thead>
+    <tr ng-repeat='card in cards'>
+      <td> {{card.front}} </td>
+      <td> {{card.back}} </td>
+      <td> {{card.bin}} </td>
+      <td> {{card.next}} </td>
+      <td> {{card.right}} </td>
+      <td> {{card.wrong}} </td>
+    </tr>
+  </table> 
 </div>
