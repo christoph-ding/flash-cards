@@ -1,4 +1,4 @@
-var admin = angular.module('admin', [])
+var admin = angular.module('admin', []);
 
 admin.controller('adminCtrl', function ($scope, $http, adminFunctionality) {
 
@@ -21,7 +21,7 @@ admin.controller('adminCtrl', function ($scope, $http, adminFunctionality) {
   }
 })
 
-admin.factory('adminFunctionality', function($http) {
+admin.factory('adminFunctionality', function ($http) {
     var addCard = function() {
       return $http({
         method: 'POST',
