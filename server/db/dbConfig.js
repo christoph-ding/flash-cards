@@ -28,7 +28,7 @@ var Card = connection.define('Card', {
     wrong: sequelize.STRING
   },
   {
-    tableName: 'Flash-Cards'
+    tableName: 'Cards'
   }
 );
 

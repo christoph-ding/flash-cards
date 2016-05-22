@@ -6,10 +6,21 @@ admin.controller('adminCtrl', function ($scope, $http, adminFunctionality) {
   $scope.back;
   $scope.cards;
 
-  $scope.addCard = function() {
-    console.log('front is: ', $scope.front, ' back is: ', $scope.back);
+  $scope.addCard = function(card) {
+    // validation if we can add the card;
     if ($scope.front && $scope.back) {
-      return adminFunctionality.addCard();
+
+      var newCard = {};
+      newCard.front = $scope.front;
+      newCard.back = $scope.back;
+      newCard.bin = 0;
+      newCard.next = new Date();
+      newCard.right = 0;
+      newCard.wrong = 0;
+
+      console.log('card is: ', newCard);
+
+      return adminFunctionality.addCard(newCard);
     }
   }
 
@@ -22,10 +33,11 @@ admin.controller('adminCtrl', function ($scope, $http, adminFunctionality) {
 })
 
 admin.factory('adminFunctionality', function ($http) {
-    var addCard = function() {
+    var addCard = function(card) {
       return $http({
         method: 'POST',
-        url: '/admin/save'
+        url: '/admin/save',
+        data: card
       }).then(function (res) {
         console.log('got back from the server: ', res);
       })
