@@ -13,6 +13,9 @@ server.listen(port, function() {
   console.log('Flash-cards, hell yeah!');
 });
 
+// database
+var db = require(path.join(__dirname, '../db/dbConfig.js'));
+
 // middleware
 require('./middleware.js')(server, express);
 

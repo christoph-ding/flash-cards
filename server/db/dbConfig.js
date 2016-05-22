@@ -3,7 +3,7 @@ var sequelize = require('sequelize');
 
 var port;
 
-var connection = new Sequelize('flash-cards', null, null {
+var connection = new sequelize('flash', null, null, {
   dialect: 'postgres',
   port: 5432
 })
@@ -20,12 +20,12 @@ connection
 
 // card table
 var Card = connection.define('Card', {
-    front: Sequelize.STRING,
-    back: Sequelize.STRING,
-    bin: Sequelize.INTEGER,
-    next: Sequelize.DATE,
-    right: Sequelize.STRING,
-    wrong: Sequelize.STRING
+    front: sequelize.STRING,
+    back: sequelize.STRING,
+    bin: sequelize.INTEGER,
+    next: sequelize.DATE,
+    right: sequelize.STRING,
+    wrong: sequelize.STRING
   },
   {
     tableName: 'Flash-Cards'
