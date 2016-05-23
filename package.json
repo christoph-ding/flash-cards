@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm install; node server/main-app/server.js"
+    "start": "npm install; node server/main-server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.15.1",
