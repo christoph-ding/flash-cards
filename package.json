@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "npm install; node server/main-app/server.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
