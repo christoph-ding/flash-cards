@@ -4,10 +4,12 @@ review.controller('reviewCtrl', function ($scope, adminFunctionality) {
 
   // global variables, yuck
   $scope.cards;
-  $scope.currentCard;
   $scope.currentIndex = 0;
+  $scope.currentCard;
   $scope.seenAllZeroes = false;
   $scope.seenAllWithinTime = false;
+  $scope.hideAnswer = true;
+  $scope.stillReviewing = false;
 
   // time based on bin
   $scope.binTimes = {
@@ -34,38 +36,45 @@ review.controller('reviewCtrl', function ($scope, adminFunctionality) {
       $scope.cards.sort(function (a,b) {
         return b.bin - a.bin;
       });
-      return;
+      $scope.currentCard = $scope.cards[$scope.currentIndex];
+      return $scope.chooseNextCard();
     })
   };
 
+  $scope.showBack = function () {
+    return $scope.hideAnswer = false;
+  }
+
   // only show cards that have elapsed enough time, based on bin
-  $scope.timeToShow = function (card) {
-    timeDifference = new Date(card['next']) - new Date();
+  $scope.timeToShow = function () {
+    timeDifference = new Date($scope.currentCard['next']) - new Date();
     return timeDifference <= 0;
   };
 
   // calculate next time to show, based on bin
-  $scope.calculateNext = function (card) {
-    return new Date( new Date() + $scope.binTimes[card['bin']]);
+  $scope.calculateNext = function () {
+    return $scope.currentCard['next'] = new Date( new Date() + $scope.binTimes[$scope.currentCard['bin']]);
   }
 
   // "Level Up" a card / update the card based on answer 
-  $scope.updateCard = function (card, gotItRight) {
+  $scope.updateCard = function (gotItRight) {
     // user got it right
     if (gotItRight) {
-      card['bin']++;
-      card['right']++;
+      $scope.currentCard['bin']++;
+      $scope.currentCard['right']++;
     } else {
     // use got it wrong
-      card['bin'] = 1;
-      card['wrong']++; 
+      $scope.currentCard['bin'] = 1;
+      $scope.currentCard['wrong']++; 
     }
-    return $scope.calculateNext(card);
+    $scope.calculateNext();
+    $scope.chooseNextCard();
   };
 
   // play the game;
   $scope.findNextZero = function () {
     // 'iterate' through the deck until we find a zero bin card
+    console.log('currentIndex is: ', $scope.currentIndex)
     while ($scope.currentIndex < $scope.cards.length) {
       var currentCard = $scope.cards[$scope.currentIndex];
       if (currentCard['bin'] === 0) {
@@ -98,12 +107,14 @@ review.controller('reviewCtrl', function ($scope, adminFunctionality) {
 
   // find next card  
   $scope.chooseNextCard = function() {
+    $scope.hideAnswer = true;
+    console.log($scope.currentCard);
     if ($scope.seenAllZeroes === false) {
       $scope.findNextZero();
     } else if ($scope.seenAllZeroes === true && $scope.seenAllWithinTime === false) {
       $scope.findNextWhateverCard();
     } else if ($scope.seenAllZeroes === true && $scope.seenAllWithinTime === true) {
-      console.log('all done!');
+      $scope.stillReviewing = true;
     }
   };
 

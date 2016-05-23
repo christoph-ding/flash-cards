@@ -2,6 +2,18 @@
 
 <div ng-controller="reviewCtrl">
   <h1> REVIEW TIME! </h1>
-  <button type="submit" ng-click="chooseNextCard()">Next Card</button>    
-  <h1 ng-model='currentCard'> {{currentCard.front}} </h1>
+  <h2> Instructions: </h2>
+  <p> Guess what the back of the card is, then click whether you got it wrong or right (be honest!) </p>
+  
+  <button type="submit" ng-click="showBack()"> Show me the answer </button>
+  <button type="submit" ng-click="updateCard(true)">I got it right</button>
+  <button type="submit" ng-click="udpateCard(false)">I got it wrong</button>
+  
+  <div ng-hide="stillReviewing">
+    <h1 ng-model="currentCard"> Front is: {{currentCard.front}} </h1>
+    <h1 ng-model="currentCard" ng-hide="hideAnswer"> Back is: {{currentCard.back}} </h1>
+  </div>
+  
+  <h2 ng-hide="!stillReviewing"> You're all done! </h2>
+
 </div>
