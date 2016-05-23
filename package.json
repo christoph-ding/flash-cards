@@ -1,8 +1,14 @@
 {
   "scripts": {
-    "start": "npm install; node server/main-server/server.js"
+    "start": "npm install; node server/main-server/server.js",
+    "postinstall": "bower install"
+  },
+  "engines": {
+    "node": "0.12.7",
+    "npm": "2.11.3"
   },
   "dependencies": {
+    "bower": "1.6.5",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "morgan": "^1.7.0",
