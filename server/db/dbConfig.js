@@ -3,7 +3,7 @@ var sequelize = require('sequelize');
 
 var port;
 
-var connection = new sequelize('flash', null, null, {
+var connection = new sequelize('flash', 'user', 'password', {
   dialect: 'postgres',
   port: 5432
 })
